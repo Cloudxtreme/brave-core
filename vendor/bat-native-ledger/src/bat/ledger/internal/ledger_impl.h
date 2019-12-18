@@ -638,6 +638,10 @@ class LedgerImpl : public ledger::Ledger,
       const std::string& publisher_key,
       ledger::ResultCallback callback);
 
+  void RunDBTransaction(
+      ledger::DBTransactionPtr transaction,
+      ledger::RunDBTransactionCallback callback);
+
  private:
   void InitializeConfirmations(
     ledger::InitializeCallback callback);

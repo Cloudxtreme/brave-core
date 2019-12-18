@@ -779,6 +779,10 @@ class RewardsServiceImpl : public RewardsService,
 
   void ReconcileStampReset() override;
 
+  void RunDBTransaction(
+      ledger::DBTransactionPtr transaction,
+      ledger::RunDBTransactionCallback callback) override;
+
   // end ledger::LedgerClient
 
   // Mojo Proxy methods
