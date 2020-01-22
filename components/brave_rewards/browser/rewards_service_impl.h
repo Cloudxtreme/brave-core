@@ -255,9 +255,10 @@ class RewardsServiceImpl : public RewardsService,
 
   void RemoveAllPendingContributionsUI() override;
 
-  void OnTip(const std::string& publisher_key,
-             double amount,
-             bool recurring) override;
+  void OnTip(
+      const std::string& publisher_key,
+      const double amount,
+      const bool recurring) override;
 
   void OnTip(
       const std::string& publisher_key,
@@ -369,7 +370,7 @@ class RewardsServiceImpl : public RewardsService,
       const ledger::Result result);
 
   void OnRecurringTipSaved(
-      ledger::SaveRecurringTipCallback callback,
+      ledger::ResultCallback callback,
       const bool success);
   void OnGetRecurringTips(
       const ledger::PublisherInfoListCallback callback,
@@ -557,7 +558,7 @@ class RewardsServiceImpl : public RewardsService,
 
   void SaveRecurringTip(
       ledger::RecurringTipPtr info,
-      ledger::SaveRecurringTipCallback callback) override;
+      ledger::ResultCallback callback) override;
 
   void GetRecurringTips(
       ledger::PublisherInfoListCallback callback) override;
