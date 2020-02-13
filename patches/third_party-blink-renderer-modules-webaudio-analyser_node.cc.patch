@@ -1,33 +1,11 @@
 diff --git a/third_party/blink/renderer/modules/webaudio/analyser_node.cc b/third_party/blink/renderer/modules/webaudio/analyser_node.cc
-index 4df218da56b5f4db4bf40d5ca19c1ab24d9e50fd..aeb3c6d01f3eeed1eb82cc0a09065596022d38b8 100644
+index 4df218da56b5f4db4bf40d5ca19c1ab24d9e50fd..02d4fedeae3452b105c872158aac88654d707d79 100644
 --- a/third_party/blink/renderer/modules/webaudio/analyser_node.cc
 +++ b/third_party/blink/renderer/modules/webaudio/analyser_node.cc
-@@ -33,8 +33,9 @@
- 
- namespace blink {
- 
--AnalyserHandler::AnalyserHandler(AudioNode& node, float sample_rate)
-+BRAVE_ANALYSERHANDLER_CONSTRUCTOR_PARAMS
-     : AudioBasicInspectorHandler(kNodeTypeAnalyser, node, sample_rate) {
-+  BRAVE_ANALYSERHANDLER_CONSTRUCTOR
-   channel_count_ = 2;
-   AddOutput(1);
- 
-@@ -42,8 +43,7 @@ AnalyserHandler::AnalyserHandler(AudioNode& node, float sample_rate)
- }
- 
- scoped_refptr<AnalyserHandler> AnalyserHandler::Create(AudioNode& node,
--                                                       float sample_rate) {
--  return base::AdoptRef(new AnalyserHandler(node, sample_rate));
-+                                                       BRAVE_ANALYSERHANDLER_CREATE
- }
- 
- AnalyserHandler::~AnalyserHandler() {
-@@ -191,7 +191,7 @@ double AnalyserHandler::TailTime() const {
- 
+@@ -192,6 +192,7 @@ double AnalyserHandler::TailTime() const {
  AnalyserNode::AnalyserNode(BaseAudioContext& context)
      : AudioBasicInspectorNode(context) {
--  SetHandler(AnalyserHandler::Create(*this, context.sampleRate()));
+   SetHandler(AnalyserHandler::Create(*this, context.sampleRate()));
 +  BRAVE_ANALYSERNODE_CONSTRUCTOR
  }
  

@@ -4,9 +4,6 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #define BRAVE_REALTIMEANALYSER_H                                             \
-  void SetFudgeFactor(double fudge_factor) { fudge_factor_ = fudge_factor; } \
-                                                                             \
- private:                                                                    \
   double fudge_factor_;
 
 #include "../../../../third_party/blink/renderer/modules/webaudio/realtime_analyser.h"

@@ -4,7 +4,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #define BRAVE_REALTIMEANALYSER_CONVERTFLOATTODB \
-  destination[i] = float(db_mag) * fudge_factor_;
+  destination[i] = destination[i] * fudge_factor_;
 
 #define BRAVE_REALTIMEANALYSER_CONVERTTOBYTEDATA \
   scaled_value = scaled_value * fudge_factor_;
