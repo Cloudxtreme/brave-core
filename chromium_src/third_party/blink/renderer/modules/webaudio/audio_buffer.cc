@@ -15,7 +15,6 @@
     if (len > 0) {                                                     \
       float* destination = destination_array->Data();                  \
       double fudge_factor = brave::GetFudgeFactor(window->document()); \
-      VLOG(1) << "getChannelData fudge factor = " << fudge_factor;     \
       for (unsigned i = 0; i < len; ++i) {                             \
         destination[i] = destination[i] * fudge_factor;                \
       }                                                                \
@@ -27,7 +26,6 @@
   LocalDOMWindow* window = LocalDOMWindow::From(script_state);        \
   if (window) {                                                       \
     double fudge_factor = brave::GetFudgeFactor(window->document());  \
-    VLOG(1) << "copyFromChannel fudge factor" << fudge_factor;        \
     for (unsigned i = 0; i < count; ++i) {                            \
       dst[i + buffer_offset] = dst[i + buffer_offset] * fudge_factor; \
     }                                                                 \
