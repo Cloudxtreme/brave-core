@@ -639,7 +639,7 @@ class LedgerImpl : public ledger::Ledger,
       ledger::GetContributionReportCallback callback) override;
 
   void GetIncompleteContributions(
-      ledger::GetIncompleteContributionsCallback callback);
+      ledger::ContributionInfoListCallback callback);
 
   virtual void GetContributionInfo(
       const std::string& contribution_id,
@@ -661,6 +661,9 @@ class LedgerImpl : public ledger::Ledger,
       ledger::RunDBTransactionCallback callback);
 
   void GetCreateScript(ledger::GetCreateScriptCallback callback);
+
+  void GetAllContributions(
+      ledger::ContributionInfoListCallback callback) override;
 
  private:
   void InitializeConfirmations(
