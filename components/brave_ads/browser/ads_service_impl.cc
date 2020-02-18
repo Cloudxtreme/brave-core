@@ -83,12 +83,6 @@ const char kRewardsNotificationAdsOnboarding[] =
 
 const unsigned int kRetriesCountOnNetworkChange = 1;
 
-#if defined(OS_ANDROID)
-const int kMaximumAdNotifications = 3;
-#else
-const int kMaximumAdNotifications = 0;  // No limit
-#endif
-
 }  // namespace
 
 class LogStreamImpl : public ads::LogStream {
@@ -820,14 +814,6 @@ void AdsServiceImpl::OnShow(
   auto type = ToMojomNotificationEventType(ads::NotificationEventType::VIEWED);
 
   bat_ads_->OnNotificationEvent(id, type);
-
-  // If we've surpassed the maximum number of visible notifications,
-  // then close the oldest one
-  notifications_.push_back(id);
-  if (kMaximumAdNotifications > 0 &&
-      notifications_.size() > kMaximumAdNotifications) {
-    CloseNotification(notifications_.front());
-  }
 }
 
 void AdsServiceImpl::OnClose(
@@ -845,11 +831,6 @@ void AdsServiceImpl::OnClose(
 
   if (completed_closure) {
     std::move(completed_closure).Run();
-  }
-
-  const auto it = std::find(notifications_.begin(), notifications_.end(), id);
-  if (it != notifications_.end()) {
-    notifications_.erase(it);
   }
 }
 
