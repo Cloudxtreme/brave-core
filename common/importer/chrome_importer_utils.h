@@ -5,8 +5,9 @@
 #ifndef BRAVE_COMMON_IMPORTER_CHROME_IMPORTER_UTILS_H_
 #define BRAVE_COMMON_IMPORTER_CHROME_IMPORTER_UTILS_H_
 
-#include <stdint.h>
+#include "base/values.h"
 
+#include <string>
 #include <vector>
 
 namespace base {
@@ -26,5 +27,8 @@ base::ListValue* GetChromeSourceProfiles(
 
 bool ChromeImporterCanImport(const base::FilePath& profile,
                              uint16_t* services_supported);
+
+std::vector<std::string> GetImportableExtensionsFromChromeExtensionsList(
+    const base::Value& extension_list);
 
 #endif  // BRAVE_COMMON_IMPORTER_CHROME_IMPORTER_UTILS_H_
