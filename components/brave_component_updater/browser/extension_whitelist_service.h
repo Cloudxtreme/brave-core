@@ -57,7 +57,6 @@ class ExtensionWhitelistService : public LocalDataFilesObserver {
 
   SEQUENCE_CHECKER(sequence_checker_);
   std::unique_ptr<ExtensionWhitelistParser> extension_whitelist_client_;
-  brave_component_updater::DATFileDataBuffer buffer_;
   std::vector<std::string> whitelist_;
   base::WeakPtrFactory<ExtensionWhitelistService> weak_factory_;
 

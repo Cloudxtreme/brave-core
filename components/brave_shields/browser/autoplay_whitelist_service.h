@@ -48,7 +48,6 @@ class AutoplayWhitelistService : public LocalDataFilesObserver {
   void OnGetDATFileData(GetDATFileDataResult result);
 
   std::unique_ptr<AutoplayWhitelistParser> autoplay_whitelist_client_;
-  brave_component_updater::DATFileDataBuffer buffer_;
   SEQUENCE_CHECKER(sequence_checker_);
 
   base::WeakPtrFactory<AutoplayWhitelistService> weak_factory_;

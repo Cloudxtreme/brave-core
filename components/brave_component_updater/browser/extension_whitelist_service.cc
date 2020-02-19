@@ -86,7 +86,6 @@ void ExtensionWhitelistService::OnGetDATFileData(GetDATFileDataResult result) {
   }
 
   extension_whitelist_client_ = std::move(result.first);
-  buffer_ = std::move(result.second);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

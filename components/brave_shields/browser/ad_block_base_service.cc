@@ -240,7 +240,6 @@ void AdBlockBaseService::UpdateAdBlockClient(
     brave_component_updater::DATFileDataBuffer buffer) {
   DCHECK(GetTaskRunner()->RunsTasksInCurrentSequence());
   ad_block_client_ = std::move(ad_block_client);
-  buffer_ = std::move(buffer);
   AddKnownTagsToAdBlockInstance();
   AddKnownResourcesToAdBlockInstance();
 }

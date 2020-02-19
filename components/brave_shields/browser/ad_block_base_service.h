@@ -73,7 +73,6 @@ class AdBlockBaseService : public BaseBraveShieldsService {
   void OnGetDATFileData(GetDATFileDataResult result);
   void OnPreferenceChanges(const std::string& pref_name);
 
-  brave_component_updater::DATFileDataBuffer buffer_;
   std::vector<std::string> tags_;
   std::string resources_;
   base::WeakPtrFactory<AdBlockBaseService> weak_factory_;
